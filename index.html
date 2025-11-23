@@ -46,7 +46,7 @@
 
   <!-- Input -->
   <div class="bg-white shadow-lg rounded-2xl p-6">
-    <h1 class="text-2xl font-bold mb-3">✈️ Travel Agent by Tina</h1>
+    <h1 class="text-2xl font-bold mb-3">Travel Agent</h1>
 
     <textarea
       id="input"
@@ -65,7 +65,7 @@
   <!-- Output -->
   <div class="bg-white shadow-lg rounded-2xl p-6 overflow-x-auto">
     <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold">🧠 Final Output</h2>
+      <h2 class="text-xl font-bold">Final Output</h2>
       <button
         id="download-btn"
         class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm"
@@ -127,7 +127,7 @@
       } catch (err) {
         showThinking(false);
         document.getElementById("final-output").textContent =
-          "❌ Request failed: " + err;
+          "Request failed: " + err;
       }
     }
 
