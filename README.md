@@ -1,21 +1,26 @@
 # Zypher Travel Agent
 
 A small agent demo built with **Zypher** and **Anthropic Claude**.  
-The goal was to test Zypher’s agent runtime, event streaming, and file creation capabilities by generating a travel itinerary from natural-language instructions.
-
-This repo contains a minimal setup: a single TypeScript entry file and a generated itinerary file.
+The goal of the project is mainly to experiment with:
+- Zypher’s agent runtime
+- Event/token streaming
+- Function calling
+- Generating structured output (itinerary tables, markdown) from natural-language input
+  
+The agent takes a user request (e.g., “make a Japan itinerary in table format”), runs it through a Zypher workflow, and returns a structured itinerary. 
 
 ---
 
-## What this does
+## Features
 
-- Takes a natural-language request (e.g., “make a 5-day Japan itinerary”)
-- Sends it to a Zypher agent backed by Claude
-- Streams back events and tokens in real time
-- Lets the model call `create_file` to write a markdown document
+- Convert free-form natural language into a structured itinerary
+- Real-time token streaming
+- Automatic markdown/table generation
+- Minimal TypeScript + Deno setup
+- Includes both:
+   - A terminal-only agent runner
+   - A simple browser UI powered by a small local server
 
-There’s no UI.  
-Everything runs in the terminal.
 
 ---
 
@@ -24,44 +29,57 @@ Everything runs in the terminal.
 - **Deno**
 - **Zypher Agent Runtime**
 - **Anthropic Claude**
+- **HTML + TypeScript**
 - (Optional) Firecrawl MCP — currently not used
 
 ---
 
-## Running It
+## Running the Terminal Version
 
 1. Install Deno  
    https://deno.land
 
-2. Add your API key:
-
-
-Put it in `.env`.
+2. Add your API key to `.env`(not committed).
 
 3. Run:
 
 ```bash
 deno run -A --env=.env main.ts
 ```
-When the agent finishes, you’ll see a file:
+## Running the Browser UI
+
+1. Start the development server:
 ```bash
-japan-5-day-itinerary.md
+ deno run -A server.ts
 ```
+
+2. Open the UI in your browser:
+
+```bash
+ http://localhost:8000
+```
+Enter a travel request and watch the agent stream back its output.
+
+
 ## File Structure
 ```bash
 .
-├── main.ts        # agent setup + streaming loop
-├── .env
-├── README.md
-└── japan-5-day-itinerary.md (generated)
+├── index.html        # Simple browser UI
+├── server.ts         # Local API endpoint for the UI
+├── main.ts           # Core agent logic + streaming handler
+├── deno.json
+├── deno.lock
+├── .env              # API keys (ignored in repo)
+└── README.md
+
 ```
 ## Notes
 
-The project avoids Node.js and external MCP servers to keep the setup simple.
+- The project avoids Node.js and external MCP servers to keep the setup simple.
 
-Streaming is handled through `eachValueFrom(event$)`.
+- Streaming is powered by Zypher’s event system.
 
-The whole point was just to get a small Zypher + Claude workflow running end-to-end.
+- The project is meant as a small end-to-end example rather than a full production agent.
 
 ## License
 
