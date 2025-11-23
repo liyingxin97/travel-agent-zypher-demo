@@ -69,7 +69,7 @@ serve(async (req) => {
       });
 
     } catch (err) {
-      console.error("❌ Agent Error:", err);
+      console.error("Agent Error:", err);
       return new Response(
         JSON.stringify({ error: err.message }),
         { status: 500, headers: { "Content-Type": "application/json" } }
