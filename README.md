@@ -34,26 +34,22 @@ The agent takes a user request (e.g., â€œmake a Japan itinerary in table formatâ
 
 ---
 
-## Running the Terminal Version
+## Run the Agent
 
 1. Install Deno  
    https://deno.land
 
-2. Add your API key to `.env`(not committed).
-
-3. Run:
-
+2. Create a .env file in the project root:
 ```bash
-deno run -A --env=.env main.ts
+  ANTHROPIC_API_KEY=your_key_here
 ```
-## Running the Browser UI
 
-1. Start the development server:
+3. Start the development server:
 ```bash
  deno run -A server.ts
 ```
 
-2. Open the UI in your browser:
+4. Open the UI in your browser:
 
 ```bash
  http://localhost:8000
